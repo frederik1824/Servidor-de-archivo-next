@@ -34,8 +34,8 @@ const upload = multer({
 app.post('/upload', upload.single('photo'), (req, res) => {
     if (!req.file) return res.status(400).json({ error: 'No se envió ninguna foto' });
 
-    // IMPORTANTE: Aquí generamos la URL pública usando tu IP
-    const fileUrl = `http://72.62.167.179:${PORT}/uploads/${req.file.filename}`;
+    // IMPORTANTE: Aquí generamos la URL pública usando tu IP y el puerto de Host (3001)
+    const fileUrl = `http://72.62.167.179:3001/uploads/${req.file.filename}`;
     res.json({ url: fileUrl });
 });
 
